@@ -11,3 +11,12 @@
 
 #### 准备数据
 1. 将数据准备成json格式，参考`bge`的数据要求
+```json
+{"query": str, "pos": List[str], "neg":List[str]}
+```
+
+2. 将所有的数据，可以都放在一个文件夹中
+
+#### 开始训练
+1. 参考`hz_run_embedding.sh`脚本，进行训练
+
