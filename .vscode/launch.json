@@ -1,0 +1,58 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: 当前文件",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "py_hz",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--output_dir",
+                "modeloutput",
+                "--model_name_or_path",
+                "model/roberta",
+                "--data_dir",
+                "data/random_neg",
+                "--cache_dir_data",
+                "cache_data",
+                "--learning_rate",
+                "2e-5",
+                "--fp16",
+                "False",
+                "--num_train_epochs",
+                "5",
+                "--per_device_train_batch_size",
+                "20",
+                "--query_max_len",
+                "64",
+                "--passage_max_len",
+                "256",
+                "--remove_unused_columns",
+                "False",
+                "--save_steps",
+                "100",
+                "--save_total_limit",
+                "3",
+                "--logging_steps",
+                "5"
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "2,3",
+                "PYDEVD_DISABLE_FILE_VALIDATION": "1",
+            }
+        },
+    ]
+}
