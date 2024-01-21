@@ -7,7 +7,10 @@
 ### 操作流程
 #### 下载模型
 
-1. 从这里下载模型[https://huggingface.co/hfl/chinese-roberta-wwm-ext](https://huggingface.co/hfl/chinese-roberta-wwm-ext)
+两种模型：
+1. 一种是类似于bert的模型，从这里下载模型[https://huggingface.co/hfl/chinese-roberta-wwm-ext](https://huggingface.co/hfl/chinese-roberta-wwm-ext)
+2. 一种是llama结构的模型，这里使用了[qwen-1_8_chat](https://huggingface.co/Qwen/Qwen-1_8B-Chat)模型,点击链接下载。
+
 
 #### 准备数据
 1. 将数据准备成json格式，参考`bge`的数据要求
@@ -18,5 +21,7 @@
 2. 将所有的数据，可以都放在一个文件夹中
 
 #### 开始训练
-1. 参考`hz_run_embedding.sh`脚本，进行训练
+
+1. 如果是使用类似于bert的模型，参考`hz_run_embedding.sh`脚本，进行训练
+2. 如果是使用类似于llama的模型，参考`hz_run_embedding_qwen.sh`脚本，进行训练
 
