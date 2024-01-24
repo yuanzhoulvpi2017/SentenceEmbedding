@@ -40,9 +40,10 @@ class TrainDatasetForEmbedding(Dataset):
 
     def __getitem__(self, item) -> dict[str, str]:
         query = self.dataset[item]["query"]
-
-        pos = random.choice(self.dataset[item]["pos"])
-        neg = random.choice(self.dataset[item]["neg"])
+        pos = self.dataset[item]["pos"][0]
+        neg = self.dataset[item]["neg"][0]
+        # pos = random.choice(self.dataset[item]["pos"])
+        # neg = random.choice(self.dataset[item]["neg"])
 
         res = {"query": query, "pos": pos, "neg": neg}
         return res
