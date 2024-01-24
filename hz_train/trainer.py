@@ -1,19 +1,36 @@
 from transformers import Trainer
-from .model import EmbeddingModel
+from .model import EmbeddingModel, EmbeddingModel4Qwen
 from typing import Optional
 import torch
 import os
 
 
 class HzTrainer(Trainer):
-    def compute_loss(self, model: EmbeddingModel, inputs, **kwargs):
+    def compute_loss(
+        self, model: EmbeddingModel | EmbeddingModel4Qwen, inputs, **kwargs
+    ):
         query = inputs["query"]
         pos = inputs["pos"]
         neg = inputs["neg"]
 
         text_embeddings = model(query, max_len=self.args.query_max_len)
-        text_pos_embeddings = model(pos, max_len=self.args.passage_max_len)
-        text_neg_embeddings = model(neg, max_len=self.args.passage_max_len)
+
+        if isinstance(model, EmbeddingModel4Qwen):
+            text_pos_embeddings = model(
+                pos, max_len=self.args.passage_max_len, is_query=False
+            )
+            text_neg_embeddings = model(
+                neg, max_len=self.args.passage_max_len, is_query=False
+            )
+        else:
+            text_pos_embeddings = model(
+                pos,
+                max_len=self.args.passage_max_len,
+            )
+            text_neg_embeddings = model(
+                neg,
+                max_len=self.args.passage_max_len,
+            )
 
         sim_pos_vector = torch.cosine_similarity(
             text_embeddings, text_pos_embeddings, dim=-1
