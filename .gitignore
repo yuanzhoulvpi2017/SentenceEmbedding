@@ -161,3 +161,5 @@ cython_debug/
 tutorial/model/
 tutorial/model/*
 /model/Q*
+data/*
+cache*

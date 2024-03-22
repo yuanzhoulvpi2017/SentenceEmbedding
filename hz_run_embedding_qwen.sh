@@ -9,12 +9,12 @@ deepspeed --include localhost:0 hz_run_self.py \
     --embedding_model_name qwen2 \
     --output_dir modeloutput \
     --model_name_or_path model/Qwen1.5-0.5B-Chat \
-    --data_dir data/random_neg \
+    --data_dir /home/yuanz/documents/SentenceEmbedding/data/random_neg \
     --cache_dir_data cache_data \
     --learning_rate 2e-5 \
     --fp16 true \
     --num_train_epochs 5 \
-    --per_device_train_batch_size 1 \
+    --per_device_train_batch_size 2 \
     --gradient_accumulation_steps 8 \
     --query_max_len 64 \
     --passage_max_len 1024 \
