@@ -13,6 +13,16 @@
             "justMyCode": true
         },
         {
+            "name": "debug_embedding",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 9501
+            },
+            "justMyCode": true
+        },
+        {
             "name": "py_hz",
             "type": "python",
             "request": "launch",

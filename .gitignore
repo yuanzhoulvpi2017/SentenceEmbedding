@@ -160,3 +160,4 @@ cython_debug/
 .idea/
 tutorial/model/
 tutorial/model/*
+/model/Q*

@@ -20,7 +20,8 @@ class HzTrainArguments(TrainingArguments):
             "than this will be truncated, sequences shorter will be padded."
         },
     )
-    temperature:float = 0.05
+    temperature: float = 0.05
+    embedding_model_name: str = field(default="qwen2")
 
 
 @dataclass

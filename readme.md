@@ -8,8 +8,9 @@
 #### 下载模型
 
 两种模型：
+
 1. 一种是类似于bert的模型，从这里下载模型[https://huggingface.co/hfl/chinese-roberta-wwm-ext](https://huggingface.co/hfl/chinese-roberta-wwm-ext)
-2. 一种是llama结构的模型，这里使用了[qwen-1_8_chat](https://huggingface.co/Qwen/Qwen-1_8B-Chat)模型,点击链接下载。
+2. 一种是llama结构的模型，这里使用了[Qwen1.5-0.5B-Chat](https://huggingface.co/Qwen/Qwen1.5-0.5B-Chat)模型,点击链接下载。
 
 
 #### 准备数据

@@ -1,5 +1,5 @@
 from transformers import Trainer
-from .model import EmbeddingModel, EmbeddingModel4Qwen
+from .model import EmbeddingModel, EmbeddingModel4Qwen, EmbeddingModel4Qwen2
 from typing import Optional
 import torch
 import os
@@ -7,7 +7,10 @@ import os
 
 class HzTrainer(Trainer):
     def compute_loss(
-        self, model: EmbeddingModel | EmbeddingModel4Qwen, inputs, **kwargs
+        self,
+        model: EmbeddingModel | EmbeddingModel4Qwen | EmbeddingModel4Qwen2,
+        inputs,
+        **kwargs,
     ):
         query = inputs["query"]
         pos = inputs["pos"]
@@ -15,7 +18,7 @@ class HzTrainer(Trainer):
 
         text_embeddings = model(query, max_len=self.args.query_max_len)
 
-        if isinstance(model, EmbeddingModel4Qwen):
+        if self.args.embedding_model_name == "qwen2":#isinstance(model, EmbeddingModel4Qwen2) or
             text_pos_embeddings = model(
                 pos, max_len=self.args.passage_max_len, is_query=False
             )

@@ -1,11 +1,19 @@
 import logging
 import os
+import debugpy
 
+# try:
+#     # 5678 is the default attach port in the VS Code debug configurations. Unless a host and port are specified, host defaults to 127.0.0.1
+#     debugpy.listen(("localhost", 9501))
+#     print("Waiting for debugger attach")
+#     debugpy.wait_for_client()
+# except Exception as e:
+#     pass
 from transformers import HfArgumentParser
 
 from hz_train.arguments import HzTrainArguments, ModelDataarguments
 from hz_train.data import HzEmbeddingCollator, TrainDatasetForEmbedding
-from hz_train.model import EmbeddingModel, EmbeddingModel4Qwen
+from hz_train.model import EmbeddingModel, EmbeddingModel4Qwen2
 from hz_train.trainer import HzTrainer
 
 logger = logging.getLogger(__name__)
@@ -34,8 +42,10 @@ def main():
     logger.info("Training/evaluation parameters %s", training_args)
     logger.info("Model Data parameters %s", modeldata_args)
 
-    if "qwen" in modeldata_args.model_name_or_path :
-        model = EmbeddingModel4Qwen(model_name_or_path=modeldata_args.model_name_or_path)
+    if training_args.embedding_model_name == "qwen2":
+        model = EmbeddingModel4Qwen2(
+            model_name_or_path=modeldata_args.model_name_or_path
+        )
     else:
         model = EmbeddingModel(model_name_or_path=modeldata_args.model_name_or_path)
 
