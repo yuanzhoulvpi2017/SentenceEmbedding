@@ -13,6 +13,15 @@
             "justMyCode": true
         },
         {
+            "name": "debug_qwen2",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 9501
+            }
+        },
+        {
             "name": "debug_embedding",
             "type": "debugpy",
             "request": "attach",

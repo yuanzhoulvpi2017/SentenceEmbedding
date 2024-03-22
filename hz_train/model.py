@@ -84,29 +84,29 @@ class EmbeddingModel4Qwen2(nn.Module):
         # )
         if self.device == "cuda":
             self.model.to("cuda")
-            
-        # if True:#model_args.use_lora:
-        #     # logging.warning("Loading model to Lora")
 
-        #     from peft import LoraConfig, get_peft_model
+        if True:  # model_args.use_lora:
+            # logging.warning("Loading model to Lora")
 
-        #     LORA_R = 32
-        #     # LORA_ALPHA = 16
-        #     LORA_DROPOUT = 0.05
-        #     TARGET_MODULES = ["q_proj", "k_proj", "v_proj", "o_proj"]
+            from peft import LoraConfig, get_peft_model
 
-        #     config = LoraConfig(
-        #         r=LORA_R,
-        #         # lora_alpha=LORA_ALPHA,
-        #         target_modules=TARGET_MODULES,
-        #         lora_dropout=LORA_DROPOUT,
-        #         bias="none",
-        #         task_type="CAUSAL_LM",
-        #     )
-        #     # model = model.to(torch.bfloat16)
-        #     self.model = get_peft_model(self.model, config)
-        #     # peft_module_casting_to_bf16(model)
-        #     self.model.print_trainable_parameters()
+            LORA_R = 32
+            # LORA_ALPHA = 16
+            LORA_DROPOUT = 0.05
+            TARGET_MODULES = ["q_proj", "k_proj", "v_proj", "o_proj"]
+
+            config = LoraConfig(
+                r=LORA_R,
+                # lora_alpha=LORA_ALPHA,
+                target_modules=TARGET_MODULES,
+                lora_dropout=LORA_DROPOUT,
+                bias="none",
+                task_type="FEATURE_EXTRACTION",  # "CAUSAL_LM",  # "FEATURE_EXTRACTION",
+            )
+            # model = model.to(torch.bfloat16)
+            self.model = get_peft_model(self.model, config)
+            # peft_module_casting_to_bf16(model)
+            self.model.print_trainable_parameters()
 
     def forward(
         self,

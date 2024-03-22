@@ -3,6 +3,7 @@
 # deepspeed --include localhost:0,1,2,3
 CUDA_VISIBLE_DEVICES=0,1,2,3 python hz_run_self.py \
     --output_dir modeloutput \
+    --embedding_model_name bert \
     --model_name_or_path model/roberta \
     --data_dir data/random_neg \
     --cache_dir_data cache_data \

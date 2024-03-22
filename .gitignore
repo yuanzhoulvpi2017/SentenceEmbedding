@@ -163,3 +163,5 @@ tutorial/model/*
 /model/Q*
 data/*
 cache*
+modeloutput/*
+modeloutput
