@@ -4,10 +4,11 @@
 # CUDA_VISIBLE_DEVICES=1,2,3 python
 
 
-deepspeed --include localhost:1,2,3 hz_run_self.py \
+deepspeed --include localhost:0 hz_run_self.py \
     --deepspeed ds_zero2_no_offload.json \
+    --embedding_model_name qwen2 \
     --output_dir modeloutput \
-    --model_name_or_path ALLModel/qwen/Qwen-1_8B-Chat \
+    --model_name_or_path model/Qwen1.5-0.5B-Chat \
     --data_dir data/random_neg \
     --cache_dir_data cache_data \
     --learning_rate 2e-5 \
