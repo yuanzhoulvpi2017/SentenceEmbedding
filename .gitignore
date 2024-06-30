@@ -165,3 +165,6 @@ data/*
 cache*
 modeloutput/*
 modeloutput
+hfl
+modelfile
+modeloutput_*
