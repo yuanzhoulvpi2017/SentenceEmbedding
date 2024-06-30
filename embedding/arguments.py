@@ -5,23 +5,8 @@ from transformers import TrainingArguments
 
 @dataclass
 class HzTrainArguments(TrainingArguments):
-    query_max_len: int = field(
-        default=32,
-        metadata={
-            "help": "The maximum total input sequence length after tokenization for passage. Sequences longer "
-            "than this will be truncated, sequences shorter will be padded."
-        },
-    )
-
-    passage_max_len: int = field(
-        default=128,
-        metadata={
-            "help": "The maximum total input sequence length after tokenization for passage. Sequences longer "
-            "than this will be truncated, sequences shorter will be padded."
-        },
-    )
-    temperature: float = 0.05
-    embedding_model_name: str = field(default="qwen2")
+    # model_train_temperature: float = 0.05
+    pass
 
 
 @dataclass
@@ -29,3 +14,19 @@ class ModelDataarguments:
     model_name_or_path: str
     data_dir: str
     cache_dir_data: str
+    query_max_len: int = field(
+        default=512,
+        metadata={
+            "help": "The maximum total input sequence length after tokenization for passage. Sequences longer "
+            "than this will be truncated, sequences shorter will be padded."
+        },
+    )
+
+    passage_max_len: int = field(
+        default=512,
+        metadata={
+            "help": "The maximum total input sequence length after tokenization for passage. Sequences longer "
+            "than this will be truncated, sequences shorter will be padded."
+        },
+    )
+    temperature: float = 0.05
