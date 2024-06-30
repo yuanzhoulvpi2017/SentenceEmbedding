@@ -93,12 +93,6 @@ class HzTrainer(Trainer):
     ):
         query = inputs["query"]
         pos = inputs["pos"]
-
-        # for i in query.keys():
-        #     query[i] = query[i].to(model.device)
-
-        # for i in query.keys():
-        #     pos[i] = pos[i].to(model.device)
         loss = model(query, pos)
         return loss
 ```
